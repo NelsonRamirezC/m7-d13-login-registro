@@ -1,0 +1,26 @@
+{
+  "name": "m7_d13_login_registro",
+  "version": "1.0.0",
+  "description": "Ejemplo de login y registro de usuarios usando sequelize, express, jsonwebtoken, etc.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NelsonRamirezC/m7-d13-login-registro.git"
+  },
+  "keywords": [
+    "login",
+    "registro",
+    "sequelize",
+    "express"
+  ],
+  "author": "Nelson Ramírez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NelsonRamirezC/m7-d13-login-registro/issues"
+  },
+  "homepage": "https://github.com/NelsonRamirezC/m7-d13-login-registro#readme"
+}
