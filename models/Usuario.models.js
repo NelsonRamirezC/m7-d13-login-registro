@@ -16,15 +16,15 @@ const Usuario = sequelize.define(
         email: {
             type: DataTypes.STRING(50),
             allowNull: false,
+            validate: {
+                isEmail: {
+                    msg: "Debe tener formato de correo.",
+                },
+            },
         },
         password: {
             type: DataTypes.STRING(255),
             allowNull: false,
-            validae: {
-                isEmail: {
-                    msg: "Debe tener formato de correo."
-                }
-            }
         },
     },
     {
