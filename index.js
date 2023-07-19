@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 const main = async () => {
     try {
         await db.authenticate();
-        await db.sync({ force: true, alter: true });
+        await db.sync({ force: false, alter: false });
         console.log("Base de datos conectada.");
         app.listen(PORT, () => {
             console.log("Servidor escuchando en puerto: " + PORT);
