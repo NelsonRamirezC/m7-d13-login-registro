@@ -9,36 +9,36 @@
                         <div class="row">
                             <div class="col-md-7 pe-0">
                                 <div class="form-left h-100 py-5 px-5">
-                                    <form action="" class="row g-4">
+                                    <form action="" class="row g-4" id="formRegistro">
                                             <div class="col-12">
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" placeholder="Enter Nombre" name="nombre">
+                                                    <input type="text" class="form-control" placeholder="Enter Nombre" name="nombre" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" placeholder="Enter Apellido" name="apellido">
+                                                    <input type="text" class="form-control" placeholder="Enter Apellido" name="apellido" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-envelope-fill"></i></div>
-                                                    <input type="email" class="form-control" placeholder="Enter Email" name="email">
+                                                    <input type="email" class="form-control" placeholder="Enter Email" name="email" required>
                                                 </div>
                                             </div>
 
                                             <div class="col-12">
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <input type="password" class="form-control" placeholder="Enter Password" name="password">
+                                                    <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <input type="password" class="form-control" placeholder="Reply Password" name="password2">
+                                                    <input type="password" class="form-control" placeholder="Reply Password" name="password2" required>
                                                 </div>
                                             </div>
 
@@ -77,3 +77,39 @@
             font-size: 100px;
         }
 </style>
+
+
+<script>
+    let formRegistro = document.getElementById("formRegistro");
+    formRegistro.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        try{
+            let data = new FormData(formRegistro);
+
+            let password = data.get("password");
+            let replyPassword = data.get("password2");
+            if(password != replyPassword){
+                return alert("Password no coinciden, vuelva a ingresar los password.")
+            }
+
+            let response = await fetch("/api/v1/usuarios", {
+                method: "POST",
+                body: data
+            })
+
+            let result = await response.json();
+
+            if(result.code == 201){
+                alert(result.message);
+                location.href="/login";
+            }else {
+                alert(result.message);
+            }
+            
+        }catch(error){
+            alert("Ocurrió un problema al registrat el usuario.")
+        }
+
+    })
+</script>
