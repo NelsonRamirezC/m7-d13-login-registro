@@ -9,6 +9,7 @@ dotenv.config({ path: path.resolve(__dirname, "./.env") });
 
 //modelos
 //import "./src/models/asociaciones.js";
+import "./models/Usuario.models.js";
 
 const PORT = process.env.PORT;
 const main = async () => {

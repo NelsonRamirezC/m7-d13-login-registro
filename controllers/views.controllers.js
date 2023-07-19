@@ -10,9 +10,14 @@ const login = (req, res) => {
     });
 };
 
+const registro = (req, res) => {
+    res.render("registro");
+};
+
 let controladores = {
     home,
-    login
-}
+    login,
+    registro,
+};
 
 export default controladores;
