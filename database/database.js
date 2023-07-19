@@ -1,4 +1,6 @@
 import Sequelize from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
 
 let database = process.env.DB_DATABASE;
 let usuario = process.env.DB_USER;
