@@ -1,7 +1,12 @@
 import app from "./app.js";
 import db from "./database/database.js";
 import dotenv from "dotenv";
-dotenv.config();
+import * as path from "path";
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.resolve(__dirname, "./.env") });
+
+
 //modelos
 //import "./src/models/asociaciones.js";
 

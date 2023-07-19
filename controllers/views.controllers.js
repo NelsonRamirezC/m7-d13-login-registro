@@ -1,9 +1,18 @@
 const home = (req, res) => {
-    res.render("home");
+    res.render("home", {
+        homeView: true
+    });
 }
 
+const login = (req, res) => {
+    res.render("login", {
+        loginView: true
+    });
+};
+
 let controladores = {
-    home
+    home,
+    login
 }
 
 export default controladores;
