@@ -10,13 +10,13 @@
           <a class="nav-link {{#if homeView}} active {{/if}}" href="/">Home</a>
         </li>
         <li class="nav-item">
+          <li class="nav-item">
+          <a class="nav-link" href="/perfil" id="linkPerfil">Perfil</a>
+        </li>
           <a class="nav-link {{#if loginView}} active {{/if}}" href="/login" id="linkLogin">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="" id="linkLogout">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/perfil" id="linkPerfil">Perfil</a>
         </li>
       </ul>
     </div>
@@ -56,5 +56,11 @@
         event.preventDefault();
         localStorage.clear();
         location.href = "/";
+    })
+
+
+    linkPerfil.addEventListener("click", (event) => {
+        event.preventDefault();
+        location.href = "/perfil/"+token
     })
 </script>
