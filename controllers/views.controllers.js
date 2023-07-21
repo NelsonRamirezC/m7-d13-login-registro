@@ -20,11 +20,12 @@ const perfil = (req, res) => {
     });
 };
 
+ 
 let controladores = {
     home,
     login,
     registro,
-    perfil
+    perfil,
 };
 
 export default controladores;

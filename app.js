@@ -19,6 +19,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+//middleware que permite recibir información mediante formdata y subir archivos
 app.use(upload());
 
 //condiguración handlebars
@@ -31,6 +32,9 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 app.set("views", path.resolve(__dirname, "./views"));
 
+
+//RUTA PUBLICA
+app.use("/public",express.static(path.resolve(__dirname, "./public")))
 
 //rutas de vistas
 app.use("/", viewsRoutes);
