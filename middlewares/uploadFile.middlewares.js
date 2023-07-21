@@ -8,12 +8,24 @@ const uploadFile = (req, res, next) => {
         if (!req.files?.imagen) {
             return next();
         }
+
         let imagen = req.files.imagen;
+
+        //VALIDACIÓN TAMAÑO DE ARCHIVO
+        let limiteMb = 1;
+        let limite = limiteMb * 1024 * 1024;
+        if (imagen.size > limite) {
+            return res.status(413).json({
+                code: 413,
+                message: `Archivo supera el tamaño permitido de: ${limiteMb}mbs.`,
+            });
+        }
 
         let prefijo = uuid().slice(0, 10);
         let extension = imagen.mimetype.split("/")[1]
+        let nombreImagen = `IMG-${prefijo}.${extension}`;
         
-        let formatosPermitidos = ["jpeg", "svg", "png"];
+        let formatosPermitidos = ["jpeg", "svg", "png", "webp"];
 
         if (!formatosPermitidos.includes(extension)) {
             return res.status(400).json({
@@ -23,9 +35,6 @@ const uploadFile = (req, res, next) => {
                     formatosPermitidos.join(" - "),
             });
         }
-
-
-        let nombreImagen = `IMG-${prefijo}.${extension}`;
 
         imagen.mv(path.resolve(__dirname, "../public/uploads/" + nombreImagen), (error) => {
             if (error)

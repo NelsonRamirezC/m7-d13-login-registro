@@ -25,9 +25,8 @@ const registro = async (req, res) => {
             try {
                fs.unlinkSync(path.resolve(__dirname, "../public/uploads/", req.imagen)); 
             } catch (error) {
-                console.log("no se puedo borrar la foto.")
+                console.log("no se puedo borrar la foto.");
             }
-             
         }
        
         res.status(500).json({

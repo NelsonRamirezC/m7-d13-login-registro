@@ -20,7 +20,10 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //middleware que permite recibir información mediante formdata y subir archivos
-app.use(upload());
+
+app.use(
+    upload()
+);
 
 //condiguración handlebars
 
