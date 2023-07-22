@@ -11,6 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 //IMPORTACIÓN DE RUTAS
 import viewsRoutes from "./routes/views.routes.js";
 import usuariosRoutes from "./routes/usuarios.routes.js";
+import reclamosRoutes from "./routes/reclamos.routes.js";
 
 const app = express();
 
@@ -44,6 +45,8 @@ app.use("/", viewsRoutes);
 
 //endpoints
 app.use("/api/v1/usuarios", usuariosRoutes);
+app.use("/api/v1/reclamos", reclamosRoutes);
+
 
 
 export default app;

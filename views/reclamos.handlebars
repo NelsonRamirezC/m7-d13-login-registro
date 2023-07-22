@@ -1,0 +1,24 @@
+<h1 class="text-center my-5">Dejanos tu reclamo.</h1>
+
+{{#if message}}
+    <h2 class="text-center">{{message}}</h2>
+{{/if}}
+
+<section class="row justify-content-center">
+    <form action="/api/v1/reclamos" method="POST" class="col-12 col-md-8 col-lg-6">
+        <div>
+            Nombre: <input class="form-control" type="text" name="nombre" required>
+        </div>
+        <div>
+            Apellido: <input class="form-control" type="text" name="apellido" required>
+        </div>
+        <div>
+            Correo: <input class="form-control" type="email" name="correo" required>
+        </div>
+        <div>
+            <p>Contenido.</p>
+            <textarea class="form-control" name="contenido" rows="10" class="w-100" required></textarea>
+        </div>
+        <button class="btn btn-primary mt-2">Enviar</button>
+    </form>
+</section>

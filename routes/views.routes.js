@@ -8,6 +8,7 @@ router.get("/login", controllerViews.login);
 router.get("/registro", controllerViews.registro);
 
 router.get("/perfil/:token", auth.verifyToken, controllerViews.perfil);
+router.get("/reclamos", controllerViews.reclamos);
 
 
 export default router;

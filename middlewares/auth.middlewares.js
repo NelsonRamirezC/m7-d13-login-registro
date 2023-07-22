@@ -34,7 +34,7 @@ const emitToken = async (req, res, next) => {
 };
 
 const verifyToken = (req, res, next) => {
-    let hostname = req.hostname;
+    let baseUrl = req.baseUrl;
     let { token } = req.params;
     let authorization = req.headers.authorization;
     if (!token) {
@@ -44,7 +44,7 @@ const verifyToken = (req, res, next) => {
                 throw new Error("sin token");
             }
         } catch (error) {
-            if (hostname.includes("api")) {
+            if (baseUrl.includes("api")) {
                 return res.status(400).json({
                     code: 400,
                     message: "Debe proporcionar un token para acceder.",

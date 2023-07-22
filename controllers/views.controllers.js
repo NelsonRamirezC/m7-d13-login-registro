@@ -20,12 +20,17 @@ const perfil = (req, res) => {
     });
 };
 
+const reclamos = (req, res) => {
+    res.render("reclamos");
+}
+
  
 let controladores = {
     home,
     login,
     registro,
     perfil,
+    reclamos
 };
 
 export default controladores;
