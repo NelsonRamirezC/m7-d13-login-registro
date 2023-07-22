@@ -1,6 +1,6 @@
 const home = (req, res) => {
     res.render("home", {
-        homeView: true
+        homeView: true,
     });
 }
 

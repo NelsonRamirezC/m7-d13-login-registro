@@ -30,11 +30,21 @@ app.use(
 
 const hbs = create({
     partialsDir: [path.resolve(__dirname, "./views/partials/")],
+    /* helpers: {
+            titulo() {
+                return "TITULO PARA MOSTRAR EN HOME";
+            }
+        } */
 });
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 app.set("views", path.resolve(__dirname, "./views"));
+
+/* app.use("/", (req, res, next) => {
+    res.locals.titulo = "Titulo de prueba";
+    next();
+}) */
 
 
 //RUTA PUBLICA

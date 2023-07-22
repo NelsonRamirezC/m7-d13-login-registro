@@ -1,5 +1,7 @@
-//password de app: owvmdkwfyallfghj
 import nodemailer from "nodemailer";
+import * as path from "path";
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 let password = process.env.PASSWORD_GMAIL
 
@@ -22,9 +24,26 @@ const enviarCorreo = (nombre, apellido, correo, asunto, contenido) => {
 
             const mailOptions = {
                 from: '"Bot correos" <correpruebanodejs@gmail.com>',
-                to: `"${nombre} ${apellido }" <${correo}>`,
+                to: `"${nombre} ${apellido}" <${correo}>`,
                 subject: asunto,
-                text: "Su correo ha sido procesdo y se dará una respuesta a la brevedad.",
+                html: `
+                        <h1>Titulo de mensaje.</h1>
+                        <div>
+                            <img src="cid:imgavatar" alt="avatar.jpg"/>
+                        </div>
+                        <p>Gracias por preferirnos...</p>
+                        
+                `,
+                attachments: [
+                    {
+                        filename: "avatar.jpg",
+                        path: path.resolve(
+                            __dirname,
+                            "../public/uploads/avatar.jpg"
+                        ),
+                        cid: "imgavatar",
+                    },
+                ],
             };
 
             transporter.sendMail(mailOptions, (error, info) => {
